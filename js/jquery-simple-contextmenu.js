@@ -27,7 +27,7 @@ $.fn.simpleContextMenu = function(args){
       
       if (fade_time_ele == false){
         //This highlights the element by simply changing its background-color.
-        var div_ele = $("<div />", {
+        div_ele = $("<div />", {
           "css": {
             "padding": padding_ele + "px"
           },
@@ -44,7 +44,7 @@ $.fn.simpleContextMenu = function(args){
         })
       }else{
         //Create three elements. One for when the mouse is hovering, one for when its not and one to trick the browser into making the parent element the right size. Then fade between the two absolute elements based on mouse-hover.
-        var div_ele_inact = $("<div />", {
+        div_ele_inact = $("<div />", {
           "css": {
             "position": "absolute",
             "width": (width - padding_ele * 2) + "px",
@@ -53,7 +53,7 @@ $.fn.simpleContextMenu = function(args){
           "class": "jquery_simple_contextmenu_ele_inact",
           "text": ele.title
         })
-        var div_ele_act = $("<div />", {
+        div_ele_act = $("<div />", {
           "css": {
             "position": "absolute",
             "display": "none",
@@ -64,7 +64,7 @@ $.fn.simpleContextMenu = function(args){
           "class": "jquery_simple_contextmenu_ele_act",
           "text": ele.title
         })
-        var div_ele_size = $("<div />", {
+        div_ele_size = $("<div />", {
           "css": {
             "visibility": "hidden",
             "padding": padding_ele + "px"
@@ -72,7 +72,7 @@ $.fn.simpleContextMenu = function(args){
           "text": ele.title
         })
         
-        var div_ele = $("<div />", {
+        div_ele = $("<div />", {
           "css": {
             "position": "relative",
             "cursor": "pointer"
@@ -85,6 +85,10 @@ $.fn.simpleContextMenu = function(args){
           $("div.jquery_simple_contextmenu_ele_act", this).fadeOut(fade_time_ele)
           $("div.jquery_simple_contextmenu_ele_inact", this).fadeIn(fade_time_ele)
         })
+        
+        div_ele.append(div_ele_inact)
+        div_ele.append(div_ele_act)
+        div_ele.append(div_ele_size)
       }
       
       args_pass = {}
@@ -105,10 +109,6 @@ $.fn.simpleContextMenu = function(args){
       }else{
         throw("No type of callback was given.")
       }
-      
-      div_ele.append(div_ele_inact)
-      div_ele.append(div_ele_act)
-      div_ele.append(div_ele_size)
       
       div.append(div_ele)
     }

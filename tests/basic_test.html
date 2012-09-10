@@ -1,0 +1,29 @@
+<html>
+<head>
+  <script src="../js/jquery.js"></script>
+  <script src="../js/jquery-simple-contextmenu.js"></script>
+</head>
+<body>
+  <div id="divtest">
+    Test
+  </div>
+  
+  <script>
+    $(document).ready(function(){
+      $("#divtest").simpleContextMenu({
+        "eles": [{
+          "click": function(){
+            alert("Clicked 1!")
+          },
+          "title": "Test 1"
+        },{
+          "click": function(){
+            alert("Clicked 2!")
+          },
+          "title": "Test 2"
+        }]
+      })
+    })
+  </script>
+</body>
+</html>
